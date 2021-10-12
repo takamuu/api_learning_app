@@ -12,7 +12,7 @@ const fetchPosts = async () => {
 
   // レスポンスが 200 OK 以外ならエラーを発生
   if (!response.ok) {
-    throw ner Error(`${response.status} (${response.statusText})`);
+    throw new Error(`${response.status} (${response.statusText})`);
   }
   // レスポンスが 200 OK なら JSON を抽出
   const posts = await response.json();
@@ -27,7 +27,7 @@ const addPost = (post) => {
   <p>内容: ${post.content}</p>
   </div>
   `;
-  postLinst.insertAdjacentHTML( 'beforeend', content);
+  postList.insertAdjacentHTML( 'beforeend', content);
 };
 
 // Rails の API から投稿一覧データを取得してページに表示する関数
